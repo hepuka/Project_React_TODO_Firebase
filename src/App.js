@@ -45,9 +45,9 @@ function App() {
       <div className="title">
         <h1>What TODO?</h1>
       </div>
-      <div>
-        <AddTodo />
-      </div>
+
+      <AddTodo />
+
       <div className="todo_container">
         {todos.map((todo) => (
           <Todo
