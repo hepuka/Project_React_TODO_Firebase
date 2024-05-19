@@ -1,4 +1,4 @@
-# docker build -t todo-app:latest .
+# docker build -t todo-app:latest --platform linux/x86_64 .
 # docker run -it -p 3000:3000 todo-app:latest
 
 FROM node:18.13.0
