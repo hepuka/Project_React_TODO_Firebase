@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { doc, deleteDoc, addDoc } from "firebase/firestore";
 import Todo from "./Todo";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -27,6 +27,7 @@ const TodoList = () => {
 
   const toggleComplete = async (todo) => {
     await addDoc(collection(db, "completed"), {
+      author: savedUserData.displayName,
       title: todo.title,
       desc: todo.desc,
       department: todo.department,
