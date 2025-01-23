@@ -42,10 +42,6 @@ const TodoList = () => {
     await deleteDoc(doc(db, "todos", id));
   };
 
-  const handleEdit = (item) => {
-    console.log(item);
-  };
-
   return (
     <div className=" w-full mt-4 md:w-96 sm:w-96 ">
       {todos.map((todo) => (
@@ -54,10 +50,7 @@ const TodoList = () => {
           key={todo.id}
         >
           <Link to={`/dashboard/edit/${todo.id}`} key={todo.id}>
-            <div
-              className="flex justify-between"
-              onClick={() => handleEdit(todo)}
-            >
+            <div className="flex justify-between">
               <Todo key={todo.id} todo={todo} />
             </div>
           </Link>
