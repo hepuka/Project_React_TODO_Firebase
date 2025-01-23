@@ -12,14 +12,6 @@ export const tabs = [
     path: "/dashboard/done",
   },
   {
-    name: "Agrár",
-    path: "/dashboard/agrar",
-  },
-  {
-    name: "Katvéd",
-    path: "/dashboard/katved",
-  },
-  {
     name: "Jegyzetek",
     path: "/dashboard/ip",
   },

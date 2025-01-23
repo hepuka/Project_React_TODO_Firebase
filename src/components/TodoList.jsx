@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { doc, deleteDoc, addDoc } from "firebase/firestore";
 import Todo from "./Todo";
-import { auth, db } from "../firebase";
+import { db } from "../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -23,7 +23,7 @@ const TodoList = () => {
       );
     });
     return () => unsub();
-  }, []);
+  }, [savedUserData.displayName]);
 
   const toggleComplete = async (todo) => {
     await addDoc(collection(db, "completed"), {
