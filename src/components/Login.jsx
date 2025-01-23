@@ -36,27 +36,27 @@ const Login = () => {
 
       <form className="w-full max-w-sm px-8">
         <div className="mb-5">
-          <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
+          <label className="block mb-2 text-xs font-medium text-gray-700 dark:text-white">
             Email
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             placeholder="Add meg az email címet"
             required
           />
         </div>
         <div className="mb-5">
-          <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
+          <label className="block mb-2 text-xs text-gray-700 dark:text-white">
             Jelszó
           </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             required
           />
         </div>
@@ -69,7 +69,7 @@ const Login = () => {
           >
             Belépés
           </button>
-          <Link className="text-gray-700 text-xs" to={"/register"}>
+          <Link className="text-gray-700 text-xs font-bold" to={"/register"}>
             Regisztráció
           </Link>
         </div>
