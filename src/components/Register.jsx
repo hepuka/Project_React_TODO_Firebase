@@ -1,24 +1,44 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { auth } from "../firebase";
-const Login = () => {
+import { db } from "../firebase";
+const Register = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
 
-  const signIn = (e) => {
+  const signUp = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        localStorage.setItem("userData", JSON.stringify(user));
 
-        navigate("/dashboard");
-      })
-      .catch((error) => {
-        console.log(error.message);
+    if (password !== password2) {
+      alert("Hibás bejelentkezési adat!");
+    }
+
+    try {
+      createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          // const user = userCredential.user;
+          updateProfile(auth.currentUser, {
+            displayName: name,
+          });
+        }
+      );
+
+      addDoc(collection(db, "users"), {
+        name: name,
+        email: email,
+        password: password,
+        createdAt: Timestamp.now().toDate(),
       });
+
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -35,6 +55,19 @@ const Login = () => {
       </h1>
 
       <form className="w-full max-w-sm px-8">
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
+            Név
+          </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            placeholder="Add meg az neved"
+            required
+          />
+        </div>
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
             Email
@@ -58,19 +91,30 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             required
+            placeholder="Add meg a jelszót"
+          />
+        </div>
+        <div className="mb-5">
+          <input
+            type="password"
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            required
+            placeholder="Add meg a jelszót újra"
           />
         </div>
 
         <div className="flex flex-col gap-3 justify-center items-center">
           <button
             type="submit"
-            onClick={signIn}
+            onClick={signUp}
             className="text-white bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Belépés
+            Elküld
           </button>
-          <Link className="text-gray-700 text-xs" to={"/register"}>
-            Regisztráció
+          <Link className="text-gray-700 text-xs" to={"/"}>
+            Vissza
           </Link>
         </div>
       </form>
@@ -78,4 +122,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

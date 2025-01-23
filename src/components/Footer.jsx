@@ -28,7 +28,7 @@ const Footer = () => {
         Kijelentkezés
       </button>
 
-      <p className="text-sm mb-1">Belépve: {savedUserData.email}</p>
+      <p className="text-sm mb-1">Belépve: {savedUserData.displayName}</p>
       <p className="text-sm mb-1">
         Készítette: Kun-Fagyal Zoltán &copy; {year}
       </p>

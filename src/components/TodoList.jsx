@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
+  const savedUserData = JSON.parse(localStorage.getItem("userData"));
 
   useEffect(() => {
     const q = query(collection(db, "todos"));
@@ -17,7 +18,9 @@ const TodoList = () => {
       querySnapshot.forEach((doc) => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
-      setTodos(todosArray);
+      setTodos(
+        todosArray.filter((todo) => todo.author === savedUserData.displayName)
+      );
     });
     return () => unsub();
   }, []);

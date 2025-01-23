@@ -8,6 +8,7 @@ export default function AddTodo() {
   const [desc, setDesc] = useState("");
   const [department, setDepartment] = useState("");
   const navigate = useNavigate();
+  const savedUserData = JSON.parse(localStorage.getItem("userData"));
 
   const handleChange = (event) => {
     setDepartment(event.target.value);
@@ -17,6 +18,7 @@ export default function AddTodo() {
     e.preventDefault();
     if (title !== "" && desc !== "" && department !== "") {
       await addDoc(collection(db, "todos"), {
+        author: savedUserData.displayName,
         title: title,
         desc: desc,
         department: department,
