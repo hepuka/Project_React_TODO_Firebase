@@ -20,7 +20,7 @@ export const tabs = [
     path: "/dashboard/katved",
   },
   {
-    name: "IP címek",
+    name: "Jegyzetek",
     path: "/dashboard/ip",
   },
 ];
