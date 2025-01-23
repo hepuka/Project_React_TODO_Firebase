@@ -67,7 +67,7 @@ export default function AddTodo() {
         <option value="Katvéd-VÍZÜGY">Katvéd-VÍZÜGY</option>
         <option value="Piac54">Piac 54.</option>
       </select>
-      <button className="text-white bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <button className="text-white bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xs px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Hozzáad
       </button>
     </form>
