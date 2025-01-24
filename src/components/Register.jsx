@@ -1,24 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  Timestamp,
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 import { auth } from "../firebase";
 import { db } from "../firebase";
+import bcrypt from "bcryptjs";
+
 const Register = () => {
+  const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const salt = bcrypt.genSaltSync(10);
+
+  useEffect(() => {
+    const q = query(collection(db, "users"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
+      let usersArray = [];
+      querySnapshot.forEach((doc) => {
+        usersArray.push({ ...doc.data(), id: doc.id });
+      });
+      setUsers(usersArray);
+    });
+    return () => unsub();
+  }, []);
+
+  function validatePassword(password) {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-]).{8,}$/;
+    return passwordRegex.test(password);
+  }
 
   const signUp = (e) => {
     e.preventDefault();
+    const hashedPassword = bcrypt.hashSync(password, salt);
 
-    if (password !== password2) {
-      alert("Hibás bejelentkezési adat!");
-    }
-
-    try {
+    if (
+      password === password2 &&
+      validatePassword(password) &&
+      emailRegex.test(email) &&
+      users.filter((user) => user.email === email).length === 0
+    ) {
       createUserWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
           // const user = userCredential.user;
@@ -31,13 +62,15 @@ const Register = () => {
       addDoc(collection(db, "users"), {
         name: name,
         email: email,
-        password: password,
+        password: hashedPassword,
         createdAt: Timestamp.now().toDate(),
       });
 
       navigate("/");
-    } catch (error) {
-      console.log(error.message);
+    } else {
+      alert(
+        "Hibás adatot adott meg vagy ezzel az email címmel már regisztráltak!"
+      );
     }
   };
 
@@ -103,6 +136,12 @@ const Register = () => {
             required
             placeholder="Add meg a jelszót újra"
           />
+        </div>
+        <div className="mb-5 text-justify">
+          <span className="text-xs text-red-500">
+            Legalább 8 karakter hosszú és tartalmaznia kell egy nagybetűt,
+            kisbetűt, számot és speciális karaktert.
+          </span>
         </div>
 
         <div className="flex flex-col gap-3 justify-center items-center">

@@ -6,6 +6,7 @@ import { tabs } from "../db";
 const Dashboard = () => {
   const savedUserData = JSON.parse(localStorage.getItem("userData"));
   const [date, setDate] = useState(new Date().toLocaleTimeString());
+
   useEffect(() => {
     setTimeout(() => {
       setDate(new Date().toLocaleTimeString());
