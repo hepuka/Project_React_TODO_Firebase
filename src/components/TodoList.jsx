@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
-  const savedUserData = JSON.parse(localStorage.getItem("userData"));
+  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
 
   useEffect(() => {
     const q = query(collection(db, "todos"));
@@ -19,15 +19,15 @@ const TodoList = () => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
       setTodos(
-        todosArray.filter((todo) => todo.author === savedUserData.displayName)
+        todosArray.filter((todo) => todo.author === currentUserData.name)
       );
     });
     return () => unsub();
-  }, [savedUserData.displayName]);
+  }, [currentUserData.name]);
 
   const toggleComplete = async (todo) => {
     await addDoc(collection(db, "completed"), {
-      author: savedUserData.displayName,
+      author: currentUserData.name,
       title: todo.title,
       desc: todo.desc,
       department: todo.department,

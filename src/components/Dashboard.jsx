@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import { tabs, admintabs } from "../db";
 
 const Dashboard = () => {
-  const savedUserData = JSON.parse(localStorage.getItem("userData"));
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
 
   return (
@@ -12,8 +11,8 @@ const Dashboard = () => {
       <div className="flex justify-between items-start sm:justify-around md:justify-around w-full h-32 mt-1 mb-3 border-b border-gray-700">
         <img className="h-full" src="/cimer.png" alt="" />
         <div>
-          <p className="text-sm">{savedUserData.displayName}</p>
-          <p className="text-sm">{savedUserData.email}</p>
+          <p className="text-sm">{currentUserData.name}</p>
+          <p className="text-sm">{currentUserData.email}</p>
           <p className="text-sm mb-3">Informatikai Osztály</p>
           <p className="text-sm">{new Date().toLocaleDateString()}</p>
         </div>

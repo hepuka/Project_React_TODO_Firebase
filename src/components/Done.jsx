@@ -5,7 +5,7 @@ import Todo from "./Todo";
 
 const Done = () => {
   const [todos, setTodos] = useState([]);
-  const savedUserData = JSON.parse(localStorage.getItem("userData"));
+  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
 
   useEffect(() => {
     const q = query(collection(db, "completed"));
@@ -15,7 +15,7 @@ const Done = () => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
       setTodos(
-        todosArray.filter((todo) => todo.author === savedUserData.displayName)
+        todosArray.filter((todo) => todo.author === currentUserData.name)
       );
     });
     return () => unsub();

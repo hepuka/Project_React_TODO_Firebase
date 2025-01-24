@@ -13,8 +13,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 const Jegyzetek = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const savedUserData = JSON.parse(localStorage.getItem("userData"));
   const [notes, setNotes] = useState([]);
+  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
 
   useEffect(() => {
     const q = query(collection(db, "notes"));
@@ -24,17 +24,17 @@ const Jegyzetek = () => {
         notesArray.push({ ...doc.data(), id: doc.id });
       });
       setNotes(
-        notesArray.filter((note) => note.author === savedUserData.displayName)
+        notesArray.filter((note) => note.author === currentUserData.name)
       );
     });
     return () => unsub();
-  }, [savedUserData.displayName]);
+  }, [currentUserData.name]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "" && desc !== "") {
       await addDoc(collection(db, "notes"), {
-        author: savedUserData.displayName,
+        author: currentUserData.name,
         title: title,
         desc: desc,
         date: new Date().toLocaleDateString(),

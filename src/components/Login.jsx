@@ -20,7 +20,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        localStorage.setItem("userData", JSON.stringify(user));
+        //localStorage.setItem("userData", JSON.stringify(user));
 
         const docRef = doc(db, "users", `${user.photoURL}`);
 
