@@ -33,6 +33,7 @@ export default function AddTodo() {
       navigate("/dashboard");
     }
   };
+
   return (
     <form
       onSubmit={handleSubmit}

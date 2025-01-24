@@ -5,13 +5,6 @@ import { tabs } from "../db";
 
 const Dashboard = () => {
   const savedUserData = JSON.parse(localStorage.getItem("userData"));
-  const [date, setDate] = useState(new Date().toLocaleTimeString());
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDate(new Date().toLocaleTimeString());
-    }, 1000);
-  });
 
   return (
     <div className="flex flex-col items-center h-screen px-4 py-4">
@@ -21,7 +14,6 @@ const Dashboard = () => {
           <p className="text-sm">{savedUserData.displayName}</p>
           <p className="text-sm mb-3">Informatikai Osztály</p>
           <p className="text-sm">{new Date().toLocaleDateString()}</p>
-          <p className="text-sm">{date}</p>
         </div>
       </div>
       <div className="flex justify-items-start md:justify-center sm:justify-center shrink-0 gap-4 w-full h-11 overflow-x-scroll no-scrollbar">
