@@ -24,14 +24,14 @@ const Dashboard = () => {
           <p className="text-sm">{date}</p>
         </div>
       </div>
-      <div className="flex justify-items-start shrink-0 gap-4 w-full h-11 overflow-x-scroll no-scrollbar">
+      <div className="flex justify-items-start md:justify-center sm:justify-center shrink-0 gap-4 w-full h-11 overflow-x-scroll no-scrollbar">
         {tabs.map((tab) => (
           <Link className="links text-xs" to={tab.path} key={tab.name}>
             {tab.name}
           </Link>
         ))}
       </div>
-      <div className="w-full h-2/3 mt-4 overflow-x-scroll no-scrollbar">
+      <div className=" flexw-full h-2/3 mt-4 md:justify-center sm:justify-center overflow-x-scroll no-scrollbar">
         <Outlet />
       </div>
       <Footer />
