@@ -31,7 +31,7 @@ const Dashboard = () => {
           </Link>
         ))}
       </div>
-      <div className=" flex w-full h-2/3 mt-4 md:justify-center sm:justify-center overflow-x-scroll no-scrollbar">
+      <div className=" flex w-full h-2/3 mt-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
         <Outlet />
       </div>
       <Footer />
