@@ -11,6 +11,7 @@ const Footer = () => {
       .then(() => {
         navigate("/");
         localStorage.removeItem("userData");
+        localStorage.removeItem("currentuser");
       })
       .catch((error) => {
         console.log(error.message);

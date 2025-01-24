@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const getCurrentUser = async (docRef) => {
+    const docSnap = await getDoc(docRef);
+    localStorage.setItem("currentuser", JSON.stringify(docSnap.data()));
+    navigate("/dashboard");
+  };
 
   const signIn = (e) => {
     e.preventDefault();
@@ -14,7 +22,9 @@ const Login = () => {
         const user = userCredential.user;
         localStorage.setItem("userData", JSON.stringify(user));
 
-        navigate("/dashboard");
+        const docRef = doc(db, "users", `${user.photoURL}`);
+
+        getCurrentUser(docRef);
       })
       .catch((error) => {
         console.log(error.message);

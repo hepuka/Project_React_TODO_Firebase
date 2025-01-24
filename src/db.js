@@ -16,3 +16,14 @@ export const tabs = [
     path: "/dashboard/ip",
   },
 ];
+
+export const admintabs = [
+  {
+    name: "Új felhasználó",
+    path: "/dashboard/addnewuser",
+  },
+  {
+    name: "Jogosultságkezelő",
+    path: "/dashboard/roles",
+  },
+];

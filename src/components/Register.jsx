@@ -7,6 +7,8 @@ import {
   Timestamp,
   query,
   onSnapshot,
+  doc,
+  setDoc,
 } from "firebase/firestore";
 import { auth } from "../firebase";
 import { db } from "../firebase";
@@ -50,21 +52,26 @@ const Register = () => {
       emailRegex.test(email) &&
       users.filter((user) => user.email === email).length === 0
     ) {
-      createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          // const user = userCredential.user;
-          updateProfile(auth.currentUser, {
-            displayName: name,
-          });
-        }
-      );
+      const newUserRef = doc(collection(db, "users"));
 
-      addDoc(collection(db, "users"), {
+      setDoc(newUserRef, {
+        id: newUserRef.id,
         name: name,
         email: email,
         password: hashedPassword,
+        role: "basic",
         createdAt: Timestamp.now().toDate(),
       });
+
+      createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          //const user = userCredential.user;
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: newUserRef.id,
+          });
+        }
+      );
 
       navigate("/");
     } else {
