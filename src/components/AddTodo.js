@@ -36,7 +36,7 @@ export default function AddTodo() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col mt-6 items-center justify-center gap-8"
+      className="flex flex-col mt-6 items-center justify-center gap-8 w-full"
     >
       <input
         type="text"
