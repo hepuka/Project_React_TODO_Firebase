@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col items-center h-screen px-4 py-4">
-      <div className="flex justify-between items-start w-full h-32 mt-1 mb-3 border-b border-gray-700">
+      <div className="flex justify-between items-start sm:justify-around md:justify-around w-full h-32 mt-1 mb-3 border-b border-gray-700">
         <img className="h-full" src="/cimer.png" alt="" />
         <div>
           <p className="text-sm">{savedUserData.displayName}</p>
