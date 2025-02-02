@@ -4,8 +4,6 @@ import Footer from "./Footer";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { FaSignOutAlt } from "react-icons/fa";
-
 import { MdAddTask } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
 import { IoMdDoneAll } from "react-icons/io";
@@ -75,6 +73,12 @@ const Dashboard = () => {
           <p className="text-xs">{currentUserData.name}</p>
           <p className="text-xs">Informatikai Osztály</p>
           <p className="text-xs">{new Date().toLocaleDateString()}</p>
+          <p
+            className="text-xs text-bold text-red-600 cursor-pointer"
+            onClick={LogOut}
+          >
+            Kijelentkezés
+          </p>
         </div>
       </div>
       <div className="flex justify-items-start md:justify-center sm:justify-center shrink-0 gap-4 w-full mt-4 h-11 overflow-x-scroll no-scrollbar">
@@ -108,18 +112,6 @@ const Dashboard = () => {
       </div>
       <div className=" flex w-full h-2/3 mt-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
         <Outlet />
-      </div>
-      <div className="mt-6 mb-6">
-        <button
-          type="submit"
-          onClick={LogOut}
-          className="flex justify-center items-center text-xs bg-transparent dark:hover:bg-gray-700 text-gray-700 font-bold py-2 px-4 border border-gray-400 dark:text-white rounded shadow"
-        >
-          <span className="mr-2">
-            <FaSignOutAlt />
-          </span>
-          <div>Kijelentkezés</div>
-        </button>
       </div>
       <Footer />
     </div>
