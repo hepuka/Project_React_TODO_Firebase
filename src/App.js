@@ -15,6 +15,7 @@ import Users from "./adminpages/Users";
 import Repassword from "./adminpages/Repassword";
 import Roles from "./adminpages/Roles";
 import Tasks from "./adminpages/Tasks";
+import Menu from "./components/Menu";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="done" element={<Done />} />
             <Route path="ip" element={<Jegyzetek />} />
             <Route path="add" element={<AddTodo />} />
+            <Route path="menu" element={<Menu />} />
           </Route>
           <Route path="/main" element={<Main />}>
             <Route path="users" element={<Users />} />

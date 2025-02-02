@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { MdAddTask } from "react-icons/md";
-import { FaTasks } from "react-icons/fa";
-import { IoMdDoneAll } from "react-icons/io";
-import { FaRegNoteSticky } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 import { db } from "../firebase";
 import {
@@ -16,6 +10,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
@@ -53,35 +48,20 @@ const Dashboard = () => {
     getCounts();
   }, [location]);
 
-  const LogOut = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-        localStorage.removeItem("userData");
-        localStorage.removeItem("currentuser");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
   return (
     <div className="flex flex-col items-center h-screen px-4 py-4">
-      <div className="flex justify-between items-start sm:justify-around md:justify-around w-full h-20 mt-1 mb-3">
-        <img className="h-full rounded-2xl" src="logo.png" alt="" />
-        <div className="flex flex-col gap-2">
-          <p className="text-xs">{currentUserData.name}</p>
-          <p className="text-xs">Informatikai Osztály</p>
-          <p className="text-xs">{new Date().toLocaleDateString()}</p>
-          <p
-            className="text-xs text-bold text-red-600 cursor-pointer"
-            onClick={LogOut}
-          >
-            Kijelentkezés
-          </p>
+      <div className="flex justify-center items-start sm:justify-around md:justify-around w-full h-20 mt-1 mb-3">
+        <img className="h-full rounded-2xl" src="/logo.png" alt="" />
+        <div className="flex flex-col h-full justify-between">
+          <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300 text-center">
+            Hajdú-Bihar Vármegyei Kormányhivatal
+          </h1>
+          <h1 className="text-sm font-bold text-gray-700 dark:text-gray-300  text-center">
+            Feladatnyilvántartó Portál
+          </h1>
         </div>
       </div>
-      <div className="flex justify-items-start md:justify-center sm:justify-center shrink-0 gap-4 w-full mt-4 h-11 overflow-x-scroll no-scrollbar">
+      {/*       <div className="flex justify-items-start md:justify-center sm:justify-center shrink-0 gap-4 w-full mt-4 h-11 overflow-x-scroll no-scrollbar">
         <Link className="links text-xs" to="/dashboard/add">
           <span className="mr-1">
             <MdAddTask />
@@ -109,10 +89,16 @@ const Dashboard = () => {
           Jegyzetek
           <span className="ml-1">({notesnumber})</span>
         </Link>
-      </div>
-      <div className=" flex w-full h-2/3 mt-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
+      </div> */}
+      <div className=" flex w-full h-2/3 mt-4 mb-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
         <Outlet />
       </div>
+
+      <Navbar
+        todonumber={todonumber}
+        completednumber={completednumber}
+        notesnumber={notesnumber}
+      />
       <Footer />
     </div>
   );
