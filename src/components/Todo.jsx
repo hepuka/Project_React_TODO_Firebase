@@ -9,6 +9,7 @@ export default function Todo({ todo, handleDelete, toggleComplete }) {
       <Link className="pr-3" to={`/dashboard/edit/${todo.id}`} key={todo.id}>
         <div className="flex flex-col justify-between w-full gap-3">
           <div className="flex items-start justify-between">
+            <img className="w-14 h-14 mr-2" src="/logo.png" alt="" />
             <div className=" flex flex-col w-full text-xs">
               <p className="text-sm font-bold">{todo.title}</p>
               <p className="text-xs dark:text-gray-300">{todo.date}</p>
