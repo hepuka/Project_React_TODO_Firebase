@@ -10,14 +10,11 @@ export default function AddTodo() {
   const navigate = useNavigate();
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
 
-  const handleChange = (event) => {
-    setDepartment(event.target.value);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (title !== "" && desc !== "" && department !== "") {
-      await addDoc(collection(db, "todos"), {
+      await addDoc(collection(db, "todo"), {
         author: currentUserData.name,
         title: title,
         desc: desc,
@@ -30,45 +27,51 @@ export default function AddTodo() {
       setDesc("");
       setDepartment("");
 
-      navigate("/dashboard");
+      navigate("/dashboard/tasks");
+    } else {
+      alert("Minden mező kitöltése kötelező!");
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col mt-6 items-center justify-center gap-8 w-full"
+      className="flex flex-col mt-6 items-center justify-center gap-3 w-full pr-1 pl-1"
     >
       <input
         type="text"
-        className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
         placeholder="Feladat neve"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <textarea
         rows="4"
-        className="block p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        className="block p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
         placeholder="Add meg a feladat leírását..."
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
       ></textarea>
+
       <select
         value={department}
-        onChange={handleChange}
-        className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        onChange={(e) => setDepartment(e.target.value)}
+        className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
       >
         <option value="">--Osztály--</option>
+        <option value="Agrár">Agrár</option>
         <option value="Agrár-ELBAO">Agrár-ELBAO</option>
         <option value="Agrár-FMO">Agrár-FMO</option>
         <option value="Agrár-NTO">Agrár-NTO</option>
         <option value="Agrár-VSZFO">Agrár-VSZFO</option>
         <option value="Agrár-LABOR">Agrár-LABOR</option>
+        <option value="Katvéd">Katvéd</option>
         <option value="Katvéd-TŰZIPARB">Katvéd-TŰZIPARB</option>
         <option value="Katvéd-VÍZÜGY">Katvéd-VÍZÜGY</option>
         <option value="Piac54">Piac 54.</option>
       </select>
-      <button className="text-white bg-gray-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-xs px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+      <button className=" mt-5 text-xs bg-transparent dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow">
         Hozzáad
       </button>
     </form>

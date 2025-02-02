@@ -3,16 +3,15 @@ import { doc, deleteDoc, addDoc } from "firebase/firestore";
 import Todo from "./Todo";
 import { db } from "../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const q = query(collection(db, "todos"));
+    const q = query(collection(db, "todo"));
     const unsub = onSnapshot(q, (querySnapshot) => {
       let todosArray = [];
       querySnapshot.forEach((doc) => {
@@ -35,32 +34,31 @@ const TodoList = () => {
       completed: true,
     });
 
-    await deleteDoc(doc(db, "todos", todo.id));
+    await deleteDoc(doc(db, "todo", todo.id));
+    navigate("/dashboard/tasks");
   };
 
   const handleDelete = async (id) => {
-    await deleteDoc(doc(db, "todos", id));
+    await deleteDoc(doc(db, "todo", id));
+
+    navigate("/dashboard/done");
+    navigate("/dashboard/tasks");
   };
 
   return (
-    <div className=" w-full mt-4 md:w-96 sm:w-96">
+    <div className=" w-full mt-4 md:w-96 sm:w-96 bg-transparent">
       {todos.map((todo) => (
         <div
-          className="flex justify-between mb-5 p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          className="flex justify-between mb-5 p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900  rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           key={todo.id}
         >
-          <Link to={`/dashboard/edit/${todo.id}`} key={todo.id}>
-            <div className="flex justify-between">
-              <Todo key={todo.id} todo={todo} />
-            </div>
-          </Link>
-          <div className="flex gap-6">
-            <button onClick={() => toggleComplete(todo)}>
-              <CheckCircleIcon id="i" />
-            </button>
-            <button onClick={() => handleDelete(todo.id)}>
-              <DeleteIcon id="i" />
-            </button>
+          <div className="flex justify-between w-full ">
+            <Todo
+              key={todo.id}
+              todo={todo}
+              toggleComplete={toggleComplete}
+              handleDelete={() => handleDelete(todo.id)}
+            />
           </div>
         </div>
       ))}

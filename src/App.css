@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background: white;
+  @apply dark:bg-gray-800 dark:text-gray-300;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -23,7 +28,11 @@
 
 @layer components {
   .links {
-    @apply w-28 flex items-center justify-center text-white border-gray-700 border px-2 rounded-lg bg-gray-700 whitespace-nowrap;
+    @apply flex items-center min-w-32 text-center bg-transparent hover:bg-gray-200  dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow;
+  }
+
+  .buttonbg {
+    background: #99ceb0;
   }
 }
 
