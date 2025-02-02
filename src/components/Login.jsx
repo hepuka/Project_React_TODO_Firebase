@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center sm:mx-auto md:mx-auto justify-around mt-5 gap-3 h-screen dark:bg-gray-800 ">
+    <div className="container flex flex-col items-center sm:mx-auto md:mx-auto sm:w-[1200px] md:w-[1200px] justify-around sm:justify-center md:justify-center sm:gap-10 md:gap-10 mt-5 gap-3 h-screen dark:bg-gray-800 ">
       <div className="w-40 h-40">
         <img className="h-full w-full rounded-2xl" src="logo.png" alt="logo" />
       </div>

@@ -10,7 +10,6 @@ const Main = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.pathname);
   const LogOut = () => {
     signOut(auth)
       .then(() => {
@@ -47,7 +46,7 @@ const Main = () => {
 
       <div
         className=" flex flex-wrap
-       items-start justify-between gap-3 w-full h-full mt-7"
+       items-start justify-between gap-3 w-full h-full mt-10"
       >
         {location.pathname === "/main" ? (
           <>
