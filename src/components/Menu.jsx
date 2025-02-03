@@ -8,6 +8,7 @@ import { BiReset } from "react-icons/bi";
 import { FcStatistics } from "react-icons/fc";
 import { MdPersonalInjury } from "react-icons/md";
 import { FaRocketchat } from "react-icons/fa";
+import { FaQrcode } from "react-icons/fa";
 
 const Menu = () => {
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
@@ -52,7 +53,13 @@ const Menu = () => {
         </div>
         <div className="flex flex-col items-start justify-center gap-2 px-4 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500">
           <FaRocketchat />
-          <p className="text-sm">Chat</p>
+          <p className="text-sm">Visszajelzés</p>
+        </div>
+      </div>
+      <div className="flex w-full  mb-5 gap-3">
+        <div className="flex flex-col items-start justify-center gap-2 px-4 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500">
+          <FaQrcode />
+          <p className="text-sm">GYIK</p>
         </div>
       </div>
 
