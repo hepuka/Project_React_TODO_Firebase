@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "bcryptjs-react": "^2.4.6",
     "firebase": "^9.18.0",
+    "random-avatar-generator": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",

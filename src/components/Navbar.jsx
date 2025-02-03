@@ -12,7 +12,7 @@ const Navbar = ({ todonumber, completednumber, notesnumber }) => {
   const location = useLocation();
 
   return (
-    <div className="flex justify-around items-center w-full mb-7 h-9">
+    <div className="flex justify-around items-center w-full fixed bottom-5 left-0 right-0">
       <Link
         className={
           location.pathname === "/dashboard/add"

@@ -74,7 +74,7 @@ const EditTodo = () => {
 
       <button
         onClick={handleEdit}
-        className=" text-xs bg-transparent dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow"
+        className=" text-xs w-full bg-transparent dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow"
       >
         Adatok módosítása
       </button>

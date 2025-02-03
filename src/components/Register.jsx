@@ -5,6 +5,7 @@ import { collection, query, onSnapshot, doc, setDoc } from "firebase/firestore";
 import { auth } from "../firebase";
 import { db } from "../firebase";
 import bcrypt from "bcryptjs";
+import { AvatarGenerator } from "random-avatar-generator";
 
 const Register = () => {
   const [users, setUsers] = useState([]);
@@ -15,6 +16,8 @@ const Register = () => {
   const navigate = useNavigate();
   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   const salt = bcrypt.genSaltSync(10);
+  const generator = new AvatarGenerator();
+  const useravatar = generator.generateRandomAvatar();
 
   useEffect(() => {
     const q = query(collection(db, "users"));
@@ -48,6 +51,7 @@ const Register = () => {
 
       setDoc(newUserRef, {
         id: newUserRef.id,
+        avatar: useravatar,
         name: name,
         email: email,
         password: hashedPassword,

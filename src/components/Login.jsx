@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import Footer from "./Footer";
 import { IoIosLogIn } from "react-icons/io";
-import { MdOutlineAppRegistration } from "react-icons/md";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +14,6 @@ const Login = () => {
   const getCurrentUser = async (docRef) => {
     const docSnap = await getDoc(docRef);
 
-    console.log(docSnap.data().role);
     localStorage.setItem("currentuser", JSON.stringify(docSnap.data()));
 
     docSnap.data().role === "basic"
@@ -39,7 +36,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center sm:mx-auto md:mx-auto sm:w-[1200px] md:w-[1200px] justify-around sm:justify-center md:justify-center sm:gap-10 md:gap-10 mt-5 gap-3 h-screen dark:bg-gray-800 ">
+    <div className="container flex flex-col items-center gap-10 sm:mx-auto md:mx-auto sm:w-[1200px] md:w-[1200px] sm:justify-center md:justify-center sm:gap-10 md:gap-10 mt-5 h-screen dark:bg-gray-800 ">
       <div className="w-40 h-40">
         <img className="h-full w-full rounded-2xl" src="logo.png" alt="logo" />
       </div>
@@ -54,9 +51,6 @@ const Login = () => {
 
       <form className="w-full px-8 sm:w-96 md:w-96">
         <div className="mb-5">
-          <label className="block mb-2 text-xs font-medium text-gray-700 dark:text-gray-300 ">
-            Email
-          </label>
           <input
             type="email"
             value={email}
@@ -67,9 +61,6 @@ const Login = () => {
           />
         </div>
         <div className="mb-5">
-          <label className="block mb-2 text-xs text-gray-700 dark:text-gray-300 ">
-            Jelszó
-          </label>
           <input
             type="password"
             value={password}
@@ -80,7 +71,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-3 items-center justify-center">
+        <div className="flex flex-col mt-10">
           <button
             type="submit"
             onClick={signIn}
@@ -91,27 +82,8 @@ const Login = () => {
             </span>
             <div>Belépés</div>
           </button>
-
-          <p className="text-xs ">
-            Nincs még fiókja?{" "}
-            <span className="text-blue-500 text-bold">
-              <Link to="/register">Regisztráció</Link>
-            </span>
-          </p>
-
-          {/*           <Link
-            className="flex justify-center items-center text-xs bg-transparent dark:hover:bg-gray-700 dark:text-gray-300  font-bold py-2 px-4 border border-gray-400 rounded shadow"
-            to={"/register"}
-          >
-            <span className="mr-2">
-              <MdOutlineAppRegistration />
-            </span>
-            <div>Regisztráció</div>
-          </Link> */}
         </div>
       </form>
-
-      <Footer />
     </div>
   );
 };

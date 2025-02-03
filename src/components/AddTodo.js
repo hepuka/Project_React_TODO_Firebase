@@ -71,7 +71,7 @@ export default function AddTodo() {
         <option value="Piac54">Piac 54.</option>
       </select>
 
-      <button className=" mt-5 text-xs bg-transparent dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow">
+      <button className=" mt-5 w-full text-xs bg-transparent dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow">
         Hozzáad
       </button>
     </form>

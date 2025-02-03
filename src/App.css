@@ -36,7 +36,7 @@ body {
   }
 
   .active {
-    @apply flex flex-col justify-center items-center gap-2 text-blue-800;
+    @apply flex flex-col justify-center items-center gap-2 text-blue-500;
   }
 }
 

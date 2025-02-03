@@ -45,29 +45,29 @@ const Main = () => {
       </div>
 
       <div
-        className=" flex flex-wrap
+        className="flex flex-wrap
        items-start justify-between gap-3 w-full h-full mt-10"
       >
         {location.pathname === "/main" ? (
           <>
             <Link to="/main/users">
               <div className="flex items-center justify-center w-56 h-56 rounded shadow border border-gray-800 dark:border-gray-300">
-                <p className="text-xl text-center px-2">Felhasználók</p>
+                <p className="text-l text-center px-2">Felhasználók</p>
               </div>
             </Link>
             <Link to="/main/repassword">
               <div className="flex items-center justify-center w-56 h-56 rounded shadow border border-gray-800  dark:border-gray-300">
-                <p className="text-xl text-center px-2">Elfelejtett jelszó</p>
+                <p className="text-l text-center px-2">Elfelejtett jelszó</p>
               </div>
             </Link>
             <Link to="/main/roles">
               <div className="flex items-center justify-center w-56 h-56 rounded shadow border border-gray-800  dark:border-gray-300">
-                <p className="text-xl text-center px-2">Jogosultságkezelő</p>
+                <p className="text-l text-center px-2">Jogosultságkezelő</p>
               </div>
             </Link>
             <Link to="/main/inprogress">
               <div className="flex items-center justify-center w-56 h-56 rounded shadow border border-gray-800  dark:border-gray-300">
-                <p className="text-xl text-center px-2">
+                <p className="text-l text-center px-2">
                   Folyamatban lévő és lezárt feladatok
                 </p>
               </div>
