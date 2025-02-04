@@ -9,12 +9,11 @@ import { FcStatistics } from "react-icons/fc";
 import { MdPersonalInjury } from "react-icons/md";
 import { FaRocketchat } from "react-icons/fa";
 import { FaQrcode } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
 
 const Menu = () => {
   const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
   const navigate = useNavigate();
-  const location = useLocation();
+
   const LogOut = () => {
     signOut(auth)
       .then(() => {
@@ -83,7 +82,7 @@ const Menu = () => {
       <button
         type="submit"
         onClick={LogOut}
-        className=" flex w-full justify-center items-center text-xs bg-transparent dark:hover:bg-gray-700 dark:text-gray-300 dark:border dark:border-gray-500  font-bold px-4 py-3 mb-10 mt-5 border border-gray-400 rounded shadow"
+        className=" flex w-full justify-center items-center text-xs bg-transparent dark:hover:bg-gray-700 dark:text-gray-300 dark:border dark:border-gray-500  font-bold px-4 py-3 mb-10 mt-10 border border-gray-400 rounded shadow"
       >
         <span className="mr-2">
           <FaSignOutAlt />
