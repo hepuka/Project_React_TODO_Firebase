@@ -16,6 +16,11 @@ import Repassword from "./adminpages/Repassword";
 import Roles from "./adminpages/Roles";
 import Tasks from "./adminpages/Tasks";
 import Menu from "./components/Menu";
+import Newpassword from "./components/Newpassword";
+import Statistics from "./components/Statistics";
+import Details from "./components/Details";
+import Feedback from "./components/Feedback";
+import Gyik from "./components/Gyik";
 
 function App() {
   return (
@@ -34,7 +39,13 @@ function App() {
             <Route path="ip" element={<Jegyzetek />} />
             <Route path="add" element={<AddTodo />} />
             <Route path="menu" element={<Menu />} />
+            <Route path="menu/newpassword" element={<Newpassword />} />
+            <Route path="menu/statistics" element={<Statistics />} />
+            <Route path="menu/details" element={<Details />} />
+            <Route path="menu/feedback" element={<Feedback />} />
+            <Route path="menu/gyik" element={<Gyik />} />
           </Route>
+
           <Route path="/main" element={<Main />}>
             <Route path="users" element={<Users />} />
             <Route path="repassword" element={<Repassword />} />
