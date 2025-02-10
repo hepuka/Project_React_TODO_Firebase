@@ -42,7 +42,7 @@ const Menu = () => {
           to="/dashboard/menu/newpassword"
         >
           <BiReset />
-          <p className="text-sm">Jelszóváltoztatás</p>
+          <p className="text-sm">Jelszómódosítás</p>
         </Link>
 
         <Link

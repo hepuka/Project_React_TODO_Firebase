@@ -12,32 +12,46 @@ const Newpassword = () => {
   const navigate = useNavigate();
   const salt = bcrypt.genSaltSync(10);
 
+  function validatePassword(password) {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-]).{8,}$/;
+    return passwordRegex.test(password);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const hashedPassword = bcrypt.hashSync(newpassword, salt);
 
-    if (newpassword !== newagainpassword) {
-      alert("A jelszavak nem egyeznek!");
-    } else {
-      try {
-        await updatePassword(auth.currentUser, newpassword);
+    if (newpassword.length === 0 || newagainpassword.length === 0) {
+      return alert("Minden mező kitöltése kötelező!");
+    }
 
-        const userDocRef = doc(db, "users", auth.currentUser.photoURL);
-        await updateDoc(userDocRef, {
-          password: hashedPassword,
-        });
+    if (!validatePassword(newpassword)) {
+      return alert("Nem megfelelo jelszó!");
+    }
 
-        alert("Sikeres jelszómódosítás!");
-        navigate("/dashboard/menu");
-      } catch (err) {
-        alert(err.message);
+    try {
+      if (newpassword !== newagainpassword) {
+        return alert("Hibás régi jelszó vagy az új jelszavak nem egyeznek!");
       }
+
+      await updatePassword(auth.currentUser, newpassword);
+
+      const userDocRef = doc(db, "users", auth.currentUser.photoURL);
+      await updateDoc(userDocRef, {
+        password: hashedPassword,
+      });
+
+      alert("Sikeres jelszómódosítás!");
+      navigate("/dashboard/menu");
+    } catch (err) {
+      alert(err.message);
     }
   };
 
   return (
     <div className="flex flex-col gap-10 items-center w-full">
-      <h1 className="mt-10">Jelszómódosítás</h1>
+      <h1 className="mt-5">Jelszómódosítás</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center gap-3 w-full pr-1 pl-1"
