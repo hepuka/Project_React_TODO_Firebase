@@ -9,29 +9,31 @@ import {
   where,
 } from "firebase/firestore";
 import Navbar from "../components/Navbar";
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
   const location = useLocation();
   const [todonumber, setTodonumber] = useState(0);
   const [completednumber, setCompletednumber] = useState(0);
   const [notesnumber, setNotesnumber] = useState(0);
+  const userName = useSelector(selectName);
 
   useEffect(() => {
     const todonumbers = collection(db, "todo");
     const todonumbersq = query(
       todonumbers,
-      where("author", "==", `${currentUserData.name}`)
+      where("author", "==", `${userName}`)
     );
     const completednumbers = collection(db, "completed");
     const completednumbersq = query(
       completednumbers,
-      where("author", "==", `${currentUserData.name}`)
+      where("author", "==", `${userName}`)
     );
     const notesnumbers = collection(db, "notes");
     const notesnumbersq = query(
       notesnumbers,
-      where("author", "==", `${currentUserData.name}`)
+      where("author", "==", `${userName}`)
     );
 
     const getCounts = async () => {
@@ -43,7 +45,7 @@ const Dashboard = () => {
       setNotesnumber(snapshot3.data().count);
     };
     getCounts();
-  }, [location]);
+  }, [location, userName]);
 
   return (
     <div className=" h-screen px-4 py-4">

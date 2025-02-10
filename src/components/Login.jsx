@@ -5,16 +5,27 @@ import { auth } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { IoIosLogIn } from "react-icons/io";
-
+import { useDispatch } from "react-redux";
+import { SET_ACTIVE_USER } from "../redux/slice/authSlice";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const getCurrentUser = async (docRef) => {
     const docSnap = await getDoc(docRef);
 
-    localStorage.setItem("currentuser", JSON.stringify(docSnap.data()));
+    dispatch(
+      SET_ACTIVE_USER({
+        id: docSnap.data().id,
+        avatar: docSnap.data().avatar,
+        name: docSnap.data().name,
+        email: docSnap.data().email,
+        password: docSnap.data().password,
+        role: docSnap.data().role,
+      })
+    );
 
     docSnap.data().role === "basic"
       ? navigate("/dashboard")

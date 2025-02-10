@@ -4,11 +4,12 @@ import Todo from "./Todo";
 import { db } from "../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
   const navigate = useNavigate();
+  const userName = useSelector(selectName);
 
   useEffect(() => {
     const q = query(collection(db, "todo"));
@@ -17,16 +18,14 @@ const TodoList = () => {
       querySnapshot.forEach((doc) => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
-      setTodos(
-        todosArray.filter((todo) => todo.author === currentUserData.name)
-      );
+      setTodos(todosArray.filter((todo) => todo.author === userName));
     });
     return () => unsub();
-  }, [currentUserData.name]);
+  }, [userName]);
 
   const toggleComplete = async (todo) => {
     await addDoc(collection(db, "completed"), {
-      author: currentUserData.name,
+      author: userName,
       title: todo.title,
       desc: todo.desc,
       department: todo.department,

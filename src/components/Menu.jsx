@@ -9,17 +9,21 @@ import { FcStatistics } from "react-icons/fc";
 import { MdPersonalInjury } from "react-icons/md";
 import { FaRocketchat } from "react-icons/fa";
 import { FaQrcode } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { REMOVE_ACTIVE_USER } from "../redux/slice/authSlice";
+import { selectName, selectAvatar } from "../redux/slice/authSlice";
 
 const Menu = () => {
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const userName = useSelector(selectName);
+  const userAvatar = useSelector(selectAvatar);
   const LogOut = () => {
     signOut(auth)
       .then(() => {
         navigate("/");
-        localStorage.removeItem("userData");
-        localStorage.removeItem("currentuser");
+
+        dispatch(REMOVE_ACTIVE_USER());
       })
       .catch((error) => {
         console.log(error.message);
@@ -29,9 +33,9 @@ const Menu = () => {
   return (
     <div className="flex flex-col items-start sm:justify-around md:justify-around w-full h-20 mt-1 mb-3">
       <div className=" flex h-full mb-10 mt-3 rounded-lg px-2 py-4 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500">
-        <img className="h-full" src={currentUserData.avatar} alt="avatar" />
+        <img className="h-full" src={userAvatar} alt="avatar" />
         <div className="flex flex-col ml-4 h-full justify-center gap-2">
-          <p className="text-sm">{currentUserData.name}</p>
+          <p className="text-sm">{userName}</p>
           <p className="text-sm">Informatikai Osztály</p>
         </div>
       </div>

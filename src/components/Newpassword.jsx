@@ -14,7 +14,7 @@ const Newpassword = () => {
 
   function validatePassword(password) {
     const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-]).{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-]).{8,}$/;
     return passwordRegex.test(password);
   }
 
@@ -27,7 +27,7 @@ const Newpassword = () => {
     }
 
     if (!validatePassword(newpassword)) {
-      return alert("Nem megfelelo jelszó!");
+      return alert("Nem megfelelő jelszó!");
     }
 
     try {

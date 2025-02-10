@@ -14,7 +14,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
-  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const emailRegex = /^[^@]+@([\w-]+\.)+[\w-]{2,4}$/;
   const salt = bcrypt.genSaltSync(10);
   const generator = new AvatarGenerator();
   const useravatar = generator.generateRandomAvatar();
@@ -33,7 +33,7 @@ const Register = () => {
 
   function validatePassword(password) {
     const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-]).{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-]).{8,}$/;
     return passwordRegex.test(password);
   }
 

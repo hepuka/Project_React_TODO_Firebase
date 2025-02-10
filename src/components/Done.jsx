@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import DoneTodo from "./DoneTodo";
-
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 const Done = () => {
   const [todos, setTodos] = useState([]);
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
+  const userName = useSelector(selectName);
 
   useEffect(() => {
     const q = query(collection(db, "completed"));
@@ -14,12 +15,10 @@ const Done = () => {
       querySnapshot.forEach((doc) => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
-      setTodos(
-        todosArray.filter((todo) => todo.author === currentUserData.name)
-      );
+      setTodos(todosArray.filter((todo) => todo.author === userName));
     });
     return () => unsub();
-  }, [currentUserData.name]);
+  }, [userName]);
 
   return (
     <div className=" w-full mt-4 md:w-96 sm:w-96 bg-transparent">

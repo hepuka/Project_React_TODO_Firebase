@@ -10,13 +10,15 @@ import {
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Note from "./Note";
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 
 const Jegyzetek = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [notes, setNotes] = useState([]);
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
   const navigate = useNavigate();
+  const userName = useSelector(selectName);
 
   useEffect(() => {
     const q = query(collection(db, "notes"));
@@ -25,18 +27,16 @@ const Jegyzetek = () => {
       querySnapshot.forEach((doc) => {
         notesArray.push({ ...doc.data(), id: doc.id });
       });
-      setNotes(
-        notesArray.filter((note) => note.author === currentUserData.name)
-      );
+      setNotes(notesArray.filter((note) => note.author === userName));
     });
     return () => unsub();
-  }, []);
+  }, [userName]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "" && desc !== "") {
       await addDoc(collection(db, "notes"), {
-        author: currentUserData.name,
+        author: userName,
         title: title,
         desc: desc,
         date: new Date().toLocaleDateString(),

@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 export default function AddTodo() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [department, setDepartment] = useState("");
   const navigate = useNavigate();
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
+  const userName = useSelector(selectName);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (title !== "" && desc !== "" && department !== "") {
       await addDoc(collection(db, "todo"), {
-        author: currentUserData.name,
+        author: userName,
         title: title,
         desc: desc,
         department: department,

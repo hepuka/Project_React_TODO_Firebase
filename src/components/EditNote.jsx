@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-
+import { selectName } from "../redux/slice/authSlice";
+import { useSelector } from "react-redux";
 const EditNote = () => {
   let params = useParams();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const navigate = useNavigate();
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
+  const userName = useSelector(selectName);
 
   useEffect(() => {
     const docRef = doc(db, "notes", `${params.id}`);
@@ -26,7 +27,7 @@ const EditNote = () => {
   const handleEdit = async (e) => {
     e.preventDefault();
     await updateDoc(doc(db, "notes", params.id), {
-      author: currentUserData.name,
+      author: userName,
       title: title,
       desc: desc,
       date: new Date().toLocaleDateString(),
