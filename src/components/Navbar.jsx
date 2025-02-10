@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { MdAddTask } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
@@ -6,7 +5,6 @@ import { IoMdDoneAll } from "react-icons/io";
 import { FaRegNoteSticky } from "react-icons/fa6";
 import { CiMenuBurger } from "react-icons/ci";
 import { useLocation } from "react-router-dom";
-/* className={router.pathname === "/" ? "active" : ""} */
 
 const Navbar = ({ todonumber, completednumber, notesnumber }) => {
   const location = useLocation();
