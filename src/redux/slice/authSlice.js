@@ -36,9 +36,13 @@ const authSlice = createSlice({
       state.role = null;
       state.createdAt = null;
     },
+    SET_NEW_PASSWORD: (state, action) => {
+      state.password = action.payload.password;
+    },
   },
 });
-export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } = authSlice.actions;
+export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER, SET_NEW_PASSWORD } =
+  authSlice.actions;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectId = (state) => state.auth.id;
 export const selectAvatar = (state) => state.auth.avatar;

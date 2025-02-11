@@ -5,13 +5,14 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { updatePassword } from "firebase/auth";
 import bcrypt from "bcryptjs";
-
+import { SET_NEW_PASSWORD } from "../redux/slice/authSlice";
+import { useDispatch } from "react-redux";
 const Newpassword = () => {
   const [newpassword, setNewpassword] = useState("");
   const [newagainpassword, setNewagainpassword] = useState("");
   const navigate = useNavigate();
   const salt = bcrypt.genSaltSync(10);
-
+  const dispatch = useDispatch();
   function validatePassword(password) {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-]).{8,}$/;
@@ -41,6 +42,12 @@ const Newpassword = () => {
       await updateDoc(userDocRef, {
         password: hashedPassword,
       });
+
+      dispatch(
+        SET_NEW_PASSWORD({
+          password: hashedPassword,
+        })
+      );
 
       alert("Sikeres jelszómódosítás!");
       navigate("/dashboard/menu");
