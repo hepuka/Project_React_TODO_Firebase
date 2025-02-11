@@ -28,7 +28,7 @@ const Login = () => {
     );
 
     docSnap.data().role === "basic"
-      ? navigate("/dashboard")
+      ? navigate("/dashboard/tasks")
       : navigate("/main");
   };
 

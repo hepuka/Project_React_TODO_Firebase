@@ -57,8 +57,8 @@ const Newpassword = () => {
   };
 
   return (
-    <div className="flex flex-col gap-10 items-center w-full">
-      <h1 className="mt-5">Jelszómódosítás</h1>
+    <div className="flex flex-col gap-3 w-full">
+      <h1 className="mt-5 text-sm ml-1">Jelszómódosítás</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center gap-3 w-full pr-1 pl-1"
