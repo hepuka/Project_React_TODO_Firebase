@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { db } from "../firebase";
@@ -10,14 +10,12 @@ import {
 } from "firebase/firestore";
 import Navbar from "../components/Navbar";
 import { selectName } from "../redux/slice/authSlice";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { GET_NUMBERS } from "../redux/slice/getNumbers";
 const Dashboard = () => {
   const location = useLocation();
-  const [todonumber, setTodonumber] = useState(0);
-  const [completednumber, setCompletednumber] = useState(0);
-  const [notesnumber, setNotesnumber] = useState(0);
   const userName = useSelector(selectName);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const todonumbers = collection(db, "todo");
@@ -40,9 +38,14 @@ const Dashboard = () => {
       const snapshot = await getCountFromServer(todonumbersq);
       const snapshot2 = await getCountFromServer(completednumbersq);
       const snapshot3 = await getCountFromServer(notesnumbersq);
-      setTodonumber(snapshot.data().count);
-      setCompletednumber(snapshot2.data().count);
-      setNotesnumber(snapshot3.data().count);
+
+      dispatch(
+        GET_NUMBERS({
+          todonumbers: snapshot.data().count,
+          completednumbers: snapshot2.data().count,
+          notesnumbers: snapshot3.data().count,
+        })
+      );
     };
     getCounts();
   }, [location, userName]);
@@ -63,11 +66,7 @@ const Dashboard = () => {
       <div className=" flex w-full h-2/3 mt-4 mb-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
         <Outlet />
       </div>
-      <Navbar
-        todonumber={todonumber}
-        completednumber={completednumber}
-        notesnumber={notesnumber}
-      />
+      <Navbar />
     </div>
   );
 };

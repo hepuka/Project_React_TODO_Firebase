@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { MdAddTask } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
@@ -5,9 +6,15 @@ import { IoMdDoneAll } from "react-icons/io";
 import { FaRegNoteSticky } from "react-icons/fa6";
 import { CiMenuBurger } from "react-icons/ci";
 import { useLocation } from "react-router-dom";
-
-const Navbar = ({ todonumber, completednumber, notesnumber }) => {
+import { selectTodonumbers } from "../redux/slice/getNumbers";
+import { selectCompletednumbers } from "../redux/slice/getNumbers";
+import { selectNotesnumbers } from "../redux/slice/getNumbers";
+import { useSelector } from "react-redux";
+const Navbar = () => {
   const location = useLocation();
+  const todonumber = useSelector(selectTodonumbers);
+  const completednumber = useSelector(selectCompletednumbers);
+  const notesnumber = useSelector(selectNotesnumbers);
 
   return (
     <div className="flex justify-around items-center w-full fixed bottom-5 left-0 right-0">
