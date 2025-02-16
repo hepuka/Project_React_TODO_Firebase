@@ -65,14 +65,14 @@ const Newpassword = () => {
       >
         <input
           type="password"
-          className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+          className="block p-2.5 w-full h-10 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Új jelszó"
           value={newpassword}
           onChange={(e) => setNewpassword(e.target.value)}
         />
         <input
           type="password"
-          className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+          className="block p-2.5 w-full h-10 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Új jelszó ismét"
           value={newagainpassword}
           onChange={(e) => setNewagainpassword(e.target.value)}

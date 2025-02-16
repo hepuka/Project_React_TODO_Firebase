@@ -18,7 +18,7 @@ const Done = () => {
       setTodos(todosArray.filter((todo) => todo.author === userName));
     });
     return () => unsub();
-  }, [userName]);
+  }, []);
 
   return (
     <div className=" w-full mt-4 bg-transparent">

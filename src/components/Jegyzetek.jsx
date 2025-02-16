@@ -30,7 +30,7 @@ const Jegyzetek = () => {
       setNotes(notesArray.filter((note) => note.author === userName));
     });
     return () => unsub();
-  }, [userName]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

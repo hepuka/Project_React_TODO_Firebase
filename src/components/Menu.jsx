@@ -31,8 +31,8 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex flex-col items-start sm:justify-around md:justify-around w-full h-20 mt-1 mb-3">
-      <div className=" flex h-full mb-10 mt-3 rounded-lg px-2 py-4 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500">
+    <div className="flex flex-col items-start w-full h-20 mt-1 mb-3">
+      <div className=" flex h-full mb-10 mt-3 shadow-lg rounded-lg px-2 py-4 w-full dark:border dark:border-gray-500">
         <img className="h-full" src={userAvatar} alt="avatar" />
         <div className="flex flex-col ml-4 h-full justify-center gap-2">
           <p className="text-sm">{userName}</p>
@@ -42,7 +42,7 @@ const Menu = () => {
 
       <div className="flex w-full mb-5 gap-3">
         <Link
-          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500"
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 shadow-lg rounded-lg dark:border dark:border-gray-500"
           to="/dashboard/menu/newpassword"
         >
           <BiReset />
@@ -50,7 +50,7 @@ const Menu = () => {
         </Link>
 
         <Link
-          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500"
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-lg dark:border dark:border-gray-500"
           to="/dashboard/menu/statistics"
         >
           <FcStatistics />
@@ -59,14 +59,14 @@ const Menu = () => {
       </div>
       <div className="flex w-full  mb-5 gap-3">
         <Link
-          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500"
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-lg dark:border dark:border-gray-500"
           to="/dashboard/menu/details"
         >
           <MdPersonalInjury />
           <p className="text-sm">Személyes adatok</p>
         </Link>
         <Link
-          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500"
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-lg dark:border dark:border-gray-500"
           to="/dashboard/menu/feedback"
         >
           <FaRocketchat />
@@ -75,26 +75,22 @@ const Menu = () => {
       </div>
       <div className="flex w-full  mb-5 gap-3">
         <Link
-          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] dark:border dark:border-gray-500"
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-lg dark:border dark:border-gray-500"
           to="/dashboard/menu/gyik"
         >
           <FaQrcode />
           <p className="text-sm">GYIK</p>
         </Link>
-      </div>
-
-      <button
-        type="submit"
-        onClick={LogOut}
-        className=" flex w-full justify-center items-center text-xs bg-transparent dark:hover:bg-gray-700 dark:text-gray-300 dark:border dark:border-gray-500  font-bold px-4 py-3 mb-10 mt-10 border border-gray-400 rounded shadow"
-      >
-        <span className="mr-2">
+        <Link
+          type="submit"
+          onClick={LogOut}
+          className="flex flex-col items-start justify-center gap-2 px-2 w-2/4 h-20 rounded-lg shadow-lg dark:border dark:border-gray-500"
+          to="/dashboard/menu/gyik"
+        >
           <FaSignOutAlt />
-        </span>
-        <div>Kijelentkezés</div>
-      </button>
-
-      <Footer />
+          <p className="text-sm text-red-500">Kijelentkezés</p>
+        </Link>
+      </div>
     </div>
   );
 };

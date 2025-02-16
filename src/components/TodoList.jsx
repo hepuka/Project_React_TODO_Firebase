@@ -21,7 +21,9 @@ const TodoList = () => {
       setTodos(todosArray.filter((todo) => todo.author === userName));
     });
     return () => unsub();
-  }, [userName]);
+  }, []);
+
+  console.log(todos);
 
   const toggleComplete = async (todo) => {
     await addDoc(collection(db, "completed"), {
