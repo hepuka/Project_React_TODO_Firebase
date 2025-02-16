@@ -41,14 +41,14 @@ export default function AddTodo() {
     >
       <input
         type="text"
-        className="block p-2.5 w-full h-10 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        className="inputstyle"
         placeholder="Feladat neve"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <textarea
         rows="4"
-        className="block p-2.5 w-full  text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        className="inputstyle"
         placeholder="Add meg a feladat leírását..."
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
@@ -57,7 +57,7 @@ export default function AddTodo() {
       <select
         value={department}
         onChange={(e) => setDepartment(e.target.value)}
-        className="block p-2.5 w-full h-10 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+        className="inputstyle"
       >
         <option value="">--Osztály--</option>
         <option value="Agrár">Agrár</option>

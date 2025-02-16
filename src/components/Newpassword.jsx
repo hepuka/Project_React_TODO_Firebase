@@ -58,10 +58,10 @@ const Newpassword = () => {
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <h1 className="mt-5 text-sm ml-1">Jelszómódosítás</h1>
+      <h1 className="mt-10 text-sm ml-1">Jelszómódosítás</h1>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center gap-3 w-full pr-1 pl-1"
+        className="flex flex-col items-center justify-center gap-10 w-full pr-1 pl-1 mt-5"
       >
         <input
           type="password"
@@ -77,8 +77,8 @@ const Newpassword = () => {
           value={newagainpassword}
           onChange={(e) => setNewagainpassword(e.target.value)}
         />
-        <div className="mb-5 text-justify">
-          <span className="text-xs  text-red-500">
+        <div className=" text-justify">
+          <span className="text-xs text-red-500">
             Legalább 8 karakter hosszú és tartalmaznia kell egy nagybetűt,
             kisbetűt, számot és speciális karaktert.
           </span>

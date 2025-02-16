@@ -4,9 +4,11 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { selectName, selectEmail } from "../redux/slice/authSlice";
 const Main = () => {
-  const currentUserData = JSON.parse(localStorage.getItem("currentuser"));
+  const userName = useSelector(selectName);
+  const userEmail = useSelector(selectEmail);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -35,8 +37,8 @@ const Main = () => {
         </div>
 
         <div className=" flex flex-col h-full items-start justify-start gap-1 py-3">
-          <p>{currentUserData.name}</p>
-          <p>{currentUserData.email}</p>
+          <p>{userName}</p>
+          <p>{userEmail}</p>
           <p>{new Date().toLocaleDateString()}</p>
           <p className="text-bold cursor-pointer text-red-600" onClick={LogOut}>
             Kijelentkezés

@@ -7,6 +7,19 @@
   @apply box-border m-0 p-0 bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300;
   font-family: "Poppins", sans-serif;
 
+  @media only screen and (min-width: 1200px) {
+    #root {
+      @apply relative h-screen w-[1200px] mx-auto my-0 pl-5 pr-5;
+    }
+
+    .main {
+      @apply absolute w-[560px] h-[calc(100vh_-_16rem)] flex flex-col items-center justify-start -translate-x-2/4 left-2/4 overflow-auto top-[11rem];
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+    }
+  }
   @media only screen and (max-width: 600px) {
     #root,
     .header,
