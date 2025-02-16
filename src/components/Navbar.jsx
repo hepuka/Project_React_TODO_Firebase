@@ -15,7 +15,7 @@ const Navbar = () => {
   const notesnumber = useSelector(selectNotesnumbers);
 
   return (
-    <div className="flex justify-around items-center w-full fixed bottom-5 left-0 right-0">
+    <div className="footer flex justify-around flex-row">
       <NavLink
         to="/dashboard/add"
         className={({ isActive }) =>

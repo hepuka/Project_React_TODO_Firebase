@@ -51,23 +51,25 @@ const Dashboard = () => {
   }, [location, userName]);
 
   return (
-    <div className=" h-screen px-4 py-4">
-      <div className="flex justify-center items-start sm:justify-around md:justify-around w-full h-20 mt-1 mb-3">
-        <img className="h-full rounded-2xl" src="/logo.png" alt="" />
-        <div className="flex flex-col h-full justify-between">
-          <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300 text-center">
-            Hajdú-Bihar Vármegyei Kormányhivatal
-          </h1>
-          <h1 className="text-sm font-bold text-gray-700 dark:text-gray-300  text-center">
-            Feladatnyilvántartó Portál
-          </h1>
+    <>
+      <div className="header">
+        <div className="flex items-center justify-between h-full w-full">
+          <img className="h-full rounded-2xl" src="/logo.png" alt="" />
+          <div className="flex flex-col h-full justify-center">
+            <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300 text-center">
+              Hajdú-Bihar Vármegyei Kormányhivatal
+            </h1>
+            <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300  text-center">
+              Feladatnyilvántartó Portál
+            </h1>
+          </div>
         </div>
       </div>
-      <div className=" flex w-full h-2/3 mt-4 mb-4 md:justify-center sm:justify-center items-start overflow-x-scroll no-scrollbar">
+      <div className="main">
         <Outlet />
       </div>
       <Navbar />
-    </div>
+    </>
   );
 };
 

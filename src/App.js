@@ -24,7 +24,7 @@ import Gyik from "./components/Gyik";
 
 function App() {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />}></Route>
@@ -54,7 +54,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

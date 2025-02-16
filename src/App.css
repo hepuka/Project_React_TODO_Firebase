@@ -4,15 +4,20 @@
 @tailwind utilities;
 
 * {
+  @apply box-border m-0 p-0 bg-white dark:bg-gray-800 dark:text-gray-300;
   font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  background: white;
-  @apply dark:bg-gray-800 dark:text-gray-300;
+  @media only screen and (max-width: 600px) {
+    #root,
+    .header,
+    .footer {
+      @apply w-full pl-5 pr-5;
+    }
+
+    .main {
+      @apply w-full left-0 pl-5 pr-5;
+    }
+  }
 }
 
 @layer utilities {
@@ -27,149 +32,28 @@ body {
 }
 
 @layer components {
-  .links {
-    @apply flex items-center min-w-32 text-center bg-transparent hover:bg-gray-200  dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow;
+  #root {
+    @apply relative h-screen w-[600px] mx-auto my-0 pl-5 pr-5;
+  }
+  .header {
+    @apply absolute w-[560px] justify-center items-start -translate-x-2/4 flex text-center h-[10rem] left-2/4 top-0 pt-5;
+  }
+  .main {
+    @apply absolute w-[560px] h-[calc(100vh_-_15rem)] flex flex-col items-center justify-start overflow-auto left-5 top-[10rem];
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+  }
+  .footer {
+    @apply absolute w-[560px] -translate-x-2/4 flex flex-col items-center justify-start h-[5rem] left-2/4 bottom-0;
   }
 
-  .buttonbg {
-    background: #99ceb0;
+  .links {
+    @apply flex items-center min-w-32 text-center bg-transparent hover:bg-gray-200  dark:hover:bg-gray-700 text-gray-700 dark:text-white font-bold py-2 px-4 border border-gray-400 rounded shadow;
   }
 
   .active {
     @apply flex flex-col justify-center items-center gap-2 text-blue-500;
   }
 }
-
-/* 
-.App {
-  margin: 0 auto;
-  max-width: 1200px;
-  height: 100vh;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  row-gap: 10px;
-  margin-top: 50px;
-
-  width: 350px;
-}
-
-form input {
-  padding: 10px 5px;
-  font-size: 14px;
-  font-weight: 500;
-  width: 90vw;
-  border: none;
-  width: 100%;
-}
-
-.input_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  height: 10vh;
-  min-width: 80vw;
-}
-
-.btn_container {
-  text-align: center;
-}
-.btn_container button {
-  background: #333;
-  color: white;
-  padding: 10px 20px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-}
-
-.todo_container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-.todo {
-  margin-top: 20px;
-  background: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 1px 2px 10px #ddd;
-  flex-wrap: wrap;
-}
-.todo input {
-  cursor: pointer;
-  width: 50%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-}
-.button-complete,
-.button-delete,
-.button-edit {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-  border-radius: 50%;
-}
-#i {
-  font-size: 30px;
-}
-.button-complete {
-  color: #95faa3;
-  margin-right: 10px;
-}
-.button-edit {
-  color: #56cfff;
-  margin-right: 10px;
-}
-.button-delete {
-  color: rgb(255, 122, 98);
-}
-@media screen and (max-width: 667px) {
-  .task_container {
-    width: 80%;
-  }
-  .task {
-    margin-right: 0px;
-  }
-}
-input:focus,
-button:focus {
-  outline: none;
-}
-
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 20px;
-}
-
-img {
-  width: 150px;
-  height: 150px;
-}
- */
