@@ -36,10 +36,10 @@
     @apply relative h-screen w-[600px] mx-auto my-0 pl-5 pr-5;
   }
   .header {
-    @apply absolute w-[560px] justify-center items-start -translate-x-2/4 flex text-center h-[10rem] left-2/4 top-0 pt-5;
+    @apply absolute w-[560px] justify-center items-start -translate-x-2/4 flex text-center h-[10rem] left-2/4 top-0 pt-10;
   }
   .main {
-    @apply absolute w-[560px] h-[calc(100vh_-_15rem)] flex flex-col items-center justify-start overflow-auto left-5 top-[10rem];
+    @apply absolute w-[560px] h-[calc(100vh_-_16rem)] flex flex-col items-center justify-start overflow-auto left-5 top-[11rem];
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
