@@ -12,6 +12,7 @@ import Navbar from "../components/Navbar";
 import { selectName } from "../redux/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_NUMBERS } from "../redux/slice/getNumbers";
+import Header from "./Header";
 const Dashboard = () => {
   const location = useLocation();
   const userName = useSelector(selectName);
@@ -52,19 +53,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="header">
-        <div className="flex items-center justify-between h-full w-full">
-          <img className="h-full rounded-2xl" src="/logo.png" alt="" />
-          <div className="flex flex-col h-full justify-center">
-            <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300 text-center">
-              Hajdú-Bihar Vármegyei Kormányhivatal
-            </h1>
-            <h1 className="text-lg font-bold text-gray-700 dark:text-gray-300  text-center">
-              Feladatnyilvántartó Portál
-            </h1>
-          </div>
-        </div>
-      </div>
+      <Header />
       <div className="main">
         <Outlet />
       </div>
