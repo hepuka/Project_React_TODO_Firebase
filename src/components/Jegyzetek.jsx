@@ -54,21 +54,21 @@ const Jegyzetek = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full md:w-96 sm:w-96 bg-transparent">
+    <div className="flex flex-col items-center w-full  bg-transparent">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col mt-3 items-center justify-center gap-2 w-full pl-1 pr-1"
       >
         <input
           type="text"
-          className="block p-2.5 w-full h-10 md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+          className="block p-2.5 w-full h-10  text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Jegyzet neve"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
           rows="4"
-          className="block p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+          className="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Jegyzet"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
@@ -78,10 +78,10 @@ const Jegyzetek = () => {
           Hozzáad
         </button>
       </form>
-      <div className=" w-full mt-10 md:w-96 sm:w-96 bg-transparent ">
+      <div className=" w-full mt-10 bg-transparent ">
         {notes.map((note) => (
           <div
-            className="flex justify-between mb-5 p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900  rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+            className="flex justify-between mb-5 p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
             key={note.id}
           >
             <div className="flex justify-between w-full ">

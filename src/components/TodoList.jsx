@@ -45,10 +45,10 @@ const TodoList = () => {
   };
 
   return (
-    <div className=" w-full mt-4 md:w-96 sm:w-96 bg-transparent">
+    <div className=" w-full mt-4 bg-transparent">
       {todos.map((todo) => (
         <div
-          className="flex justify-between mb-5 p-2.5 w-full md:w-96 sm:w-96 text-sm text-gray-900  rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+          className="flex justify-between mb-5 p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           key={todo.id}
         >
           <div className="flex justify-between w-full ">
