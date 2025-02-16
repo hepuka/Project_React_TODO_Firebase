@@ -25,3 +25,10 @@ export const tabs = [
     icon: <FaRegNoteSticky />,
   },
 ];
+
+export const adminmenu = [
+  { route: "/main/users", name: "Felhasználók" },
+  { route: "/main/roles", name: "Jogosultságkezelő" },
+  { route: "/main/inprogress", name: "Folyamatban lévő és lezárt feladatok" },
+  { route: "/main/repassword", name: "Elfelejtett jelszó" },
+];
