@@ -35,6 +35,11 @@
   #root {
     @apply relative h-screen;
   }
+
+  body{
+    @apply h-screen;
+  }
+  
   .header {
     @apply absolute w-[600px] mx-auto justify-center items-start -translate-x-2/4 left-2/4 flex text-center h-[10rem] top-0 pt-10 pl-5 pr-5;
   }
