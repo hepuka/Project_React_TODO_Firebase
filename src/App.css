@@ -36,6 +36,10 @@
     @apply h-screen;
   }
 
+  body {
+    @apply h-screen;
+  }
+
   .header {
     @apply w-[600px] mx-auto mb-[1rem] justify-center items-start flex text-center h-[10rem] pt-[1rem] pl-5 pr-5;
   }
