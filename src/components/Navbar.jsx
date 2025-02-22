@@ -10,10 +10,6 @@ import { selectCompletednumbers } from "../redux/slice/getNumbers";
 import { selectNotesnumbers } from "../redux/slice/getNumbers";
 import { useSelector } from "react-redux";
 const Navbar = () => {
-  const todonumber = useSelector(selectTodonumbers);
-  const completednumber = useSelector(selectCompletednumbers);
-  const notesnumber = useSelector(selectNotesnumbers);
-
   return (
     <div className="footer flex justify-around flex-row">
       <NavLink
@@ -37,9 +33,7 @@ const Navbar = () => {
         }
       >
         <FaTasks size={22} />
-        <span className="text-[10px]">
-          Feladatok <span>({todonumber})</span>
-        </span>
+        <span className="text-[10px]">Feladatok</span>
       </NavLink>
 
       <NavLink
@@ -51,9 +45,7 @@ const Navbar = () => {
         }
       >
         <IoMdDoneAll size={22} />
-        <span className="text-[10px]">
-          Teljesített <span>({completednumber})</span>
-        </span>
+        <span className="text-[10px]">Teljesített</span>
       </NavLink>
 
       <NavLink
@@ -65,9 +57,7 @@ const Navbar = () => {
         }
       >
         <FaRegNoteSticky size={22} />
-        <span className="text-[10px]">
-          Jegyzetek <span>({notesnumber})</span>
-        </span>
+        <span className="text-[10px]">Jegyzetek</span>
       </NavLink>
 
       <NavLink

@@ -21,6 +21,7 @@ import Statistics from "./components/Statistics";
 import Details from "./components/Details";
 import Feedback from "./components/Feedback";
 import Gyik from "./components/Gyik";
+import EditUser from "./adminpages/EditUser";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
 
           <Route path="/main" element={<Main />}>
             <Route path="users" element={<Users />} />
+            <Route path="users/:id" element={<EditUser />} />
             <Route path="repassword" element={<Repassword />} />
             <Route path="roles" element={<Roles />} />
             <Route path="inprogress" element={<Tasks />} />

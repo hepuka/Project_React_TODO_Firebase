@@ -4,7 +4,11 @@ const Header = () => {
   return (
     <div className="header">
       <div className="flex items-center justify-between h-full w-full">
-        <img className="h-full mr-1 rounded-2xl" src="/logo.png" alt="" />
+        <img
+          className="h-[100px] w-[100px] mr-1 rounded-2xl"
+          src="/logo.png"
+          alt=""
+        />
         <div className="flex flex-col h-full justify-center">
           <h1 className="text-lg font-bold  text-center">
             Hajdú-Bihar Vármegyei Kormányhivatal

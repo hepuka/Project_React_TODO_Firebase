@@ -33,17 +33,18 @@
 
 @layer components {
   #root {
-    @apply relative h-screen;
+    @apply h-screen;
   }
+
   .header {
-    @apply absolute w-[600px] mx-auto justify-center items-start -translate-x-2/4 left-2/4 flex text-center h-[10rem] top-0 pt-10 pl-5 pr-5;
+    @apply w-[600px] mx-auto mb-5 justify-center items-start flex text-center h-[10rem] top-0 pt-10 pl-5 pr-5;
   }
 
   .header-admin {
     @apply absolute w-[1200px] mx-auto justify-center items-start -translate-x-2/4 left-2/4 flex text-center h-[10rem] top-0 pt-10 pl-5 pr-5;
   }
   .main {
-    @apply absolute w-[600px] mx-auto h-[calc(100vh_-_16rem)] -translate-x-2/4 left-2/4 flex flex-col items-center justify-start overflow-auto top-[11rem] pl-5 pr-5;
+    @apply w-[600px] mx-auto h-[calc(100vh_-_16rem)] flex flex-col items-center justify-start overflow-auto top-[11rem] pl-5 pr-5;
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -58,7 +59,7 @@
     /* IE and Edge */
   }
   .footer {
-    @apply absolute w-[600px] mx-auto -translate-x-2/4 flex flex-col items-center justify-start h-[5rem] left-2/4 bottom-0 pl-5 pr-5;
+    @apply w-[600px] mx-auto flex flex-col items-center justify-start h-[5rem] pl-5 pr-5;
   }
 
   .statbox-text {
