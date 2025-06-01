@@ -29,7 +29,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
 
           <Route path="dashboard" element={<Dashboard />}>
             <Route path="" element={<TodoList />} />
@@ -49,6 +48,7 @@ function App() {
 
           <Route path="/main" element={<Main />}>
             <Route path="users" element={<Users />} />
+            <Route path="register" element={<Register />}></Route>
             <Route path="users/:id" element={<EditUser />} />
             <Route path="repassword" element={<Repassword />} />
             <Route path="roles" element={<Roles />} />

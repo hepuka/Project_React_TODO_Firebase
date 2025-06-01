@@ -25,7 +25,7 @@ const HeaderAdmin = () => {
   return (
     <div className="header-admin">
       <div className=" flex items-center justify-between w-full h-28">
-        <img className="h-full" src="logo.png" alt="logo" />
+        <img className="h-full" src="/logo.png" alt="logo" />
         <div className="text-center h-full flex flex-col justify-around items-center">
           <h1 className="text-3xl mb-2">
             Hajdú-Bihar Vármegyei Kormányhivatal

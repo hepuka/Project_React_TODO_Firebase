@@ -29,7 +29,11 @@ const Users = () => {
         <thead>
           <tr className="text-left h-[30px]">
             <th>Név</th>
+            <th>Munkakör</th>
             <th>Email</th>
+            <th>Mobiltelefon</th>
+            <th>Vezetékes telefon</th>
+            <th>Iroda</th>
             <th>Szerepkör</th>
           </tr>
         </thead>
@@ -37,11 +41,15 @@ const Users = () => {
           {users?.map((user) => (
             <tr
               key={user.id}
-              className="text-left h-[30px]"
+              className="text-left h-[40px] hover:cursor-pointer"
               onClick={() => handleRowClick(user.id)}
             >
               <td>{user.name}</td>
+              <td>{user.jobname}</td>
               <td>{user.email}</td>
+              <td>{user.mobilephone}</td>
+              <td>{user.phone}</td>
+              <td>{user.room}</td>
               <td>{user.role}</td>
             </tr>
           ))}

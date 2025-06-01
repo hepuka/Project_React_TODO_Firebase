@@ -28,7 +28,8 @@ export const tabs = [
 
 export const adminmenu = [
   { route: "/main/users", name: "Felhasználók" },
+  { route: "/main/register", name: "Új felhasználó hozzáadása" },
   { route: "/main/roles", name: "Jogosultságkezelő" },
+  { route: "/main/repassword", name: "Jelszóemlékeztető küldése" },
   { route: "/main/inprogress", name: "Folyamatban lévő és lezárt feladatok" },
-  { route: "/main/repassword", name: "Elfelejtett jelszó" },
 ];

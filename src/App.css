@@ -68,6 +68,10 @@
     /* IE and Edge */
   }
 
+  .footer-admin {
+    @apply absolute w-[1200px] mx-auto flex flex-col items-center justify-start h-[5rem]  -translate-x-2/4 left-2/4 bottom-0  pl-5 pr-5;
+  }
+
   .statbox-text {
     @apply flex flex-col items-start justify-center gap-2 px-2 w-[250px] h-20 rounded-lg shadow-lg dark:border dark:border-gray-500;
   }

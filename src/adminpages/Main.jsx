@@ -31,7 +31,9 @@ const Main = () => {
           )}
         </div>
       </div>
-      <Footer />
+      <div className="footer-admin">
+        <Footer />
+      </div>
     </>
   );
 };

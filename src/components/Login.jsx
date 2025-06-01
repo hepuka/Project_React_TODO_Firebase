@@ -10,7 +10,9 @@ const Login = () => {
       <div className="main">
         <LoginForm />
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </>
   );
 };
